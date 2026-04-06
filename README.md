@@ -19,7 +19,7 @@
 | `main.py` | [] |
 | `organizer.py` | [] |
 | `analyzer.py` | [Xariadna Pérez] |
-| `auditor.py` | []|
+| `auditor.py` | [Miguel Agelvis]|
 | `reports.py` | [] |
 | `utils.py` | [] |
 
