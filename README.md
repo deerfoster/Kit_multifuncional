@@ -44,7 +44,8 @@
 
 - Al tener coincidencias el sistema muestra el número de coincidencias y una lista con los mismos.
 
-- Si el archivo no existe mostrará Error "No hay coincidencias o no existe". El archivo puede estar mla escrito o en la ruta incorrecta
+- Si el archivo no existe mostrará Error "No hay coincidencias o no existe". El archivo puede estar mal escrito o
+. en la ruta incorrecta
 
 
 ### Comandos del Sistema de Auditoría
