@@ -13,8 +13,17 @@ def leer_archivo(nombre_archivo):
 #Import del regex (regular expressions) en python
 import re
 
+#Funcion para identificar los patrones emails, números, fechas o palabras clave
+def busqueda_archivo(archivo , nombre):
 #Variable con los patrones a identificar
-patrones = "[a-zA-Z0-9]+@[a-zA-Z]+\.(com|edu|net)"
+    patrones = {
+        "email": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
+        "telefono": r"\+?\d{10,12}",
+        "fecha": r"\d{2}/\d{2}/\d{4}",
+        "palabras_clave": r"\b[a-zA-Z]{8,}\b"
+    }
 
-#Input para el buscador
-user = input("...")
+    coincidencias = []
+    
+    #Input para el buscador
+    user = input("Archivo: nombre ")
