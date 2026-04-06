@@ -1,20 +1,19 @@
+#Import del regex
+import re
+
 #Funcion para leer los archivos
 def leer_archivo(nombre_archivo):
-    lineas = []
+    #encoding='utf-8' es para detectar carácteres especiales
+    #como ñ o acentos.
     try:
         with open(nombre_archivo, 'r', encoding='utf-8') as f:
             for linea in f:
-                lineas.append(linea.strip())
-            return lineas
+                yield linea.strip()
     except:
         print("El archivo no existe o no coincide. ")
-        return []
 
-#Import del regex (regular expressions) en python
-import re
-
-#Funcion para identificar los patrones emails, números, fechas o palabras clave
-def busqueda_archivo(archivo , nombre):
+#Funcion para identificar los patrones.
+def busqueda_archivo(nombre , tipo):
 #Variable con los patrones a identificar
     patrones = {
         "email": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
@@ -23,7 +22,11 @@ def busqueda_archivo(archivo , nombre):
         "palabras_clave": r"\b[a-zA-Z]{8,}\b"
     }
 
+    patron = patrones.get(tipo)
     coincidencias = []
-    
-    #Input para el buscador
+
+    if patron:
+        for linea in leer_archivo(nombre_archivo):
+
+    #Input + buscador
     user = input("Archivo: nombre ")
