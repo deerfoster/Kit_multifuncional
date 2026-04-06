@@ -48,7 +48,6 @@
 
 
 ### Comandos del Sistema de Auditoría
-```bash
 
 - Crear snapshot: python auditor.py crear -f "RUTA" -s "NOMBRE"
 - Crea un punto de restauración de una carpeta
