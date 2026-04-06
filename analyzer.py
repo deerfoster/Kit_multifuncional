@@ -21,10 +21,11 @@ def busqueda_archivo(nombre , tipo):
         "fecha": r"\d{2}/\d{2}/\d{4}",
         "palabras_clave": r"\b[a-zA-Z]{8,}\b"
     }
-
+    #Variable para guardar el tipo de patron
     patron = patrones.get(tipo)
     coincidencias = []
 
+    #Condicional + variable patron para buscar ese tipo de dato al leer el archivo con la primera funcion
     if patron:
         for linea in leer_archivo(nombre):
             coincidencia_linea = re.findall(patron , linea)
