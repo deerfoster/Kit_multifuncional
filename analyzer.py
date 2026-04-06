@@ -35,4 +35,9 @@ def busqueda_archivo(nombre , tipo):
 user_archivo = input("Nombre del archivo: ")
 user_tipo = input("Qué tipo de archivo desea buscar? (email/telefono/fecha/palabra clave)")
 
+resultado = busqueda_archivo(user_archivo , user_tipo)
 
+print(f"Se hallaron {len(resultado)} coincidencias: ")
+
+for i in resultado:
+    print(f"- {i}")
