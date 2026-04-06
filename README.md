@@ -2,15 +2,17 @@
 
 ## DESCRIPCIÓN DEL PROYECTO
 
+- Este Software de automatización de archivos desarrollado con la herramienta Python permite extraer información desde archivos de texto externos. El Software funciona como un escáner localizando datos específicos (correos, teléfonos, fechas y palabras clave) de manera rápida.
+
 ## INTEGRANTES DEL EQUIPO
 
 | # | Nombre | Rol | GitHub |
 |---|--------|-----|--------|
-| 1 | [Eduardo Hernández]|  | [@Eduardo1705v] |
-| 2 | [Xariadna Perez] |  | [@deerfoster] |
-| 3 | [Ricardo Noriega] |  | [@salvvaged] |
-| 4 | [Miguel Agelvis] | | [@miguelucho16e] |
-| 5 | [Luis Fuentes] | | [@fuentesluisdavid558] |
+| 1 | [Eduardo Hernández]| Líder / Desarrollador | [@Eduardo1705v] |
+| 2 | [Xariadna Perez] | Desarrollador | [@deerfoster] |
+| 3 | [Ricardo Noriega] | Desarrollador | [@salvvaged] |
+| 4 | [Miguel Agelvis] | Desarrollador | [@miguelucho16e] |
+| 5 | [Luis Fuentes] | Desarrollador | [@fuentesluisdavid558] |
 
 ### Distribución del trabajo:
 
@@ -21,9 +23,28 @@
 | `analyzer.py` | [Xariadna Pérez] |
 | `auditor.py` | [Ricardo Noriega]|
 | `reports.py` | [Miguel Agelvis] |
-| `utils.py` | [] |
+| `utils.py` | [Luis Fuentes] |
 
 ## INSTRUCCIONES DE EJECUCIÓN
+
+#Comandos del sistema analizador de contenido
+```bash
+
+- Al ejecutar el código, tener en cuenta:
+    
+    - Nombre del archivo: Nombre completo.txt
+    - Tipo de búsqueda: Sólo hay 4 tipos:
+
+| # | Comando | Qué busca | Ejemplo |
+|---|---------|-----------|---------|
+| 1 | Email | Correos eléctrónicos | usuario@correo.com |
+| 2 | Teléfono | Números de 10 a 12 digitos | +58412000000 |
+| 3 | Fecha | Fechas en formato DD/MM/AAAA | 06/04/2026 |
+| 4 | Palabras clave | Palabras de 8 a más letras | Archivo |
+
+- Al tener coincidencias el sistema muestra el número de coincidencias y una lista con los mismos.
+
+- Si el archivo no existe mostrará Error "No hay coincidencias o no existe". El archivo puede estar mla escrito o en la ruta incorrecta
 
 
 ### Comandos del Sistema de Auditoría
