@@ -26,7 +26,13 @@ def busqueda_archivo(nombre , tipo):
     coincidencias = []
 
     if patron:
-        for linea in leer_archivo(nombre_archivo):
+        for linea in leer_archivo(nombre):
+            coincidencia_linea = re.findall(patron , linea)
+            coincidencias.extend(coincidencia_linea)
+    return coincidencias
 
-    #Input + buscador
-    user = input("Archivo: nombre ")
+#Input + buscador
+user_archivo = input("Nombre del archivo: ")
+user_tipo = input("Qué tipo de archivo desea buscar? (email/telefono/fecha/palabra clave)")
+
+
