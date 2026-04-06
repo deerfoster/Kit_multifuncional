@@ -71,3 +71,48 @@
 - Limpiar snapshots antiguos: python auditor.py limpiar-snapshots -d "DIAS"
 - Elimina snapshots más antiguos de X días (por defecto 30)
 - Ej: python auditor.py limpiar-snapshots -d 7
+
+
+### Generador de reportes
+
+El módulo de generación de reportes tiene como objetivo transformar los datos procesados por los distintos componentes del sistema en información clara, organizada y exportable.
+
+Este módulo recibe los resultados provenientes de:
+
+* El **gestor de organización de archivos**
+* El **analizador de contenido**
+* El **auditor de cambios**
+
+A partir de estos datos, se generan reportes automáticos en dos formatos:
+
+## Reporte en formato TXT
+
+* Presenta la información de manera legible para el usuario.
+* Organiza los datos por secciones (organización, análisis y auditoría).
+* Ideal para consultas rápidas desde la terminal.
+
+## Reporte en formato CSV
+
+* Estructura los datos en forma de tabla.
+* Permite su uso en herramientas externas como Excel o Google Sheets.
+* Facilita el análisis y la manipulación de la información.
+
+## Funcionamiento
+
+El módulo utiliza estructuras de datos como diccionarios para organizar la información antes de exportarla. Cada sección del reporte corresponde a un conjunto de datos específicos generados por otros módulos.
+
+Para la creación de archivos se emplea `with open()`, garantizando un manejo seguro de los recursos. Además, se implementa manejo de excepciones (`try/except`) para evitar errores durante la generación de los reportes.
+
+## Integración
+
+Este módulo es independiente del procesamiento interno de los datos, ya que trabaja únicamente con estructuras ya generadas. Esto permite una integración sencilla con el resto del sistema a través del menú principal.
+
+## Resultado
+
+Como salida, el sistema genera automáticamente:
+
+* `reporte.txt`
+* `reporte.csv`
+
+Ambos archivos contienen un resumen estructurado de las operaciones realizadas por el sistema, facilitando la interpretación de resultados y la toma de decisiones.
+
