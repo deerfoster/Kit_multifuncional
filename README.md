@@ -18,7 +18,8 @@
 
 | Módulo | Responsable |
 |--------|-------------|
-| `main.py` | [] |
+| `main.py` | [Ricardo Noriega] |
+| `menus.py` | [Ricardo Noriega] |
 | `organizer.py` | [Eduardo Hernández] |
 | `analyzer.py` | [Xariadna Pérez] |
 | `auditor.py` | [Ricardo Noriega]|
@@ -46,32 +47,33 @@
 
 - Si el archivo no existe mostrará Error "No hay coincidencias o no existe". El archivo puede estar mal escrito o
 . en la ruta incorrecta
+```
 
+### Sistema de Auditoría
+```markdown
 
-### Comandos del Sistema de Auditoría
+El Sistema de auditoría de archivos permite crear **snapshots** (instantáneas) del estado de una carpeta y detectar cambios posteriores como archivos **nuevos**, **modificados** o **eliminados**.
 
-- Crear snapshot: python auditor.py crear -f "RUTA" -s "NOMBRE"
-- Crea un punto de restauración de una carpeta
-- Ej: python auditor.py crear -f /home/docs -s backup_2024
+#### Funcionalidades
 
-- Comparar snapshots: python auditor.py comparar -f "RUTA" -a "SNAPSHOT_ANTERIOR" -s "SNAPSHOT_ACTUAL"
-- Detecta archivos nuevos, modificados o eliminados
-- Ej: python auditor.py comparar -f /home/docs -a backup_2025 -s backup_2026
+- Crear snapshots del estado actual de una carpeta
+- Comparar dos snapshots para detectar cambios
+- Registro automático de ejecuciones y errores
+- Medición de tiempo de ejecución
+- Almacenamiento de snapshots en JSON
 
-- Listar snapshots: python auditor.py listar
-- Muestra todos los snapshots disponibles
+#### Requisitos de uso
 
-- Ver log: python auditor.py log -l "LINEAS"
-- Muestra el historial de operaciones (por defecto 50 líneas)
-- Ej: python auditor.py log -l 100
+- Python 3.6+
+- Módulos estándar: `os`, `json`, `hashlib`, `time`, `datetime`, `functools`
 
-- Limpiar log: python auditor.py limpiar
-- Reinicia el archivo de auditoría
+#### Notas
 
-- Limpiar snapshots antiguos: python auditor.py limpiar-snapshots -d "DIAS"
-- Elimina snapshots más antiguos de X días (por defecto 30)
-- Ej: python auditor.py limpiar-snapshots -d 7
-
+- Los snapshots almacenan el **hash MD5** de cada archivo para detectar modificaciones
+- Los nombres de snapshot solo pueden contener caracteres alfanuméricos, `._-`
+- Archivos sin acceso de lectura registran hash como `None`
+- Las rutas se guardan en formato universal (con `/`) para compatibilidad multiplataforma
+```
 
 ### Generador de reportes
 
