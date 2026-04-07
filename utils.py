@@ -1,8 +1,19 @@
 import sys
 import time
+import os  
+
+def limpiar_pantalla():
+    """Limpia la terminal según el sistema operativo."""
+    # 'nt' es Windows, 'posix' es Mac/Linux
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def esperar_enter():
+    """Pausa el programa hasta que el usuario presione una tecla."""
+    input("\nPresione Enter para continuar...")
 
 def mostrar_ayuda():
     """Muestra un mensaje de ayuda detallado para el usuario."""
+    limpiar_pantalla()
     print("\n--- MENÚ DE AYUDA ---")
     print("Este kit le permite gestionar archivos mediante la línea de comandos.")
     print("1. Organización: Clasifica y mueve archivos por extensión.")
@@ -10,10 +21,12 @@ def mostrar_ayuda():
     print("3. Reportes: Genera resúmenes de las acciones realizadas.")
     print("Asegúrese de tener permisos de lectura/escritura en la carpeta objetivo.")
     print("---------------------\n")
+    esperar_enter()
 
 def submenu_organizacion():
     """Ejemplo de un submódulo con su propio menú."""
     while True:
+        limpiar_pantalla()
         print("\n--- SUBMENÚ: ORGANIZACIÓN DE ARCHIVOS ---")
         print("1. Clasificar por extensión")
         print("2. Renombrar archivos en lote")
@@ -23,21 +36,23 @@ def submenu_organizacion():
         
         if opcion == '1':
             print("\n[+] Iniciando clasificación de archivos...")
-            # Aquí iría la llamada a la función del módulo de organización
+            # Llamada a organizer.py
+            esperar_enter()
         elif opcion == '2':
             print("\n[+] Iniciando renombrado en lote...")
-            # Aquí iría la llamada a la función correspondiente
+            esperar_enter()
         elif opcion == '3':
-            print("\n[-] Volviendo al menú principal...")
             break
         else:
-            print("\n[!] Error: Por favor, ingrese una opción válida (1, 2 o 3).")
+            print("\n[!] Error: Por favor, ingrese una opción válida.")
+            time.sleep(1)
 
 def menu_principal():
     """Punto de entrada principal del Kit Multifuncional."""
     while True:
+        limpiar_pantalla()
         print("\n" + "="*45)
-        print("  KIT MULTIFUNCIONAL DE AUTOMATIZACIÓN")
+        print("   KIT MULTIFUNCIONAL DE AUTOMATIZACIÓN")
         print("="*45)
         print("1. Módulo de Organización")
         print("2. Módulo de Análisis de Archivos")
@@ -47,17 +62,16 @@ def menu_principal():
         print("="*45)
         
         try:
-            # Forzamos la conversión a entero para validar el tipo de dato
             opcion = int(input("Ingrese el número de la opción deseada: "))
             
             if opcion == 1:
                 submenu_organizacion()
             elif opcion == 2:
                 print("\n[+] Accediendo al módulo de Análisis...")
-                # submenu_analisis()
+                time.sleep(1)
             elif opcion == 3:
                 print("\n[+] Accediendo al módulo de Reportes...")
-                # submenu_reportes()
+                time.sleep(1)
             elif opcion == 4:
                 mostrar_ayuda()
             elif opcion == 5:
@@ -65,11 +79,12 @@ def menu_principal():
                 time.sleep(1)
                 sys.exit(0)
             else:
-                print("\n[!] Error: Opción fuera de rango. Seleccione un número del 1 al 5.")
+                print("\n[!] Error: Opción fuera de rango.")
+                time.sleep(1)
                 
         except ValueError:
-            # Captura el error si el usuario ingresa letras o símbolos en lugar de números
             print("\n[!] Error fatal de entrada: Debe ingresar un valor numérico.")
-
+            time.sleep(1)
+            
 if __name__ == "__main__":
     menu_principal()
