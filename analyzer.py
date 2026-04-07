@@ -1,6 +1,15 @@
 #Import del regex
 import re
 
+#Funcion decorador
+def screen(func):
+    def wrapper(*arg , **kwargs):
+        print("Iniciando proceso... ")
+        resultado = func(*arg , **kwargs)
+        print("Búsqueda completada. ")
+        return resultado
+    return wrapper
+
 #Funcion para leer los archivos
 def leer_archivo(nombre_archivo):
     #encoding='utf-8' es para detectar carácteres especiales
@@ -9,7 +18,7 @@ def leer_archivo(nombre_archivo):
         with open(nombre_archivo, 'r', encoding='utf-8') as f:
             for linea in f:
                 yield linea.strip()
-    except:
+    except FileNotFoundError:
         print("El archivo no existe o no coincide. ")
 
 #Funcion para identificar los patrones.
@@ -32,13 +41,15 @@ def busqueda_archivo(nombre , tipo):
             coincidencias.extend(coincidencia_linea)
     return coincidencias
 
-#Input + buscador + mostrar los resultados
-user_archivo = input("Nombre del archivo: ")
-user_tipo = input("Qué tipo de archivo desea buscar? (email/telefono/fecha/palabra clave)")
+@screen
+def search_box():
+    #Input + buscador + mostrar los resultados
+    user_archivo = input("Nombre del archivo: ")
+    user_tipo = input("Qué tipo de archivo desea buscar? (email/telefono/fecha/palabra clave)")
 
-resultado = busqueda_archivo(user_archivo , user_tipo)
+    resultado = busqueda_archivo(user_archivo , user_tipo)
 
-print(f"Se hallaron {len(resultado)} coincidencias: ")
+    print(f"Se hallaron {len(resultado)} coincidencias: ")
 
-for i in resultado:
-    print(f"- {i}")
+    for i in resultado:
+        print(f"- {i}")
