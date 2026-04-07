@@ -1,7 +1,7 @@
-#Import del regex
+# Import del regex
 import re
 
-#Funcion decorador
+# Funcion decorador
 def screen(func):
     def wrapper(*arg , **kwargs):
         print("Iniciando proceso... ")
@@ -10,10 +10,10 @@ def screen(func):
         return resultado
     return wrapper
 
-#Funcion para leer los archivos
+# Funcion para leer los archivos
 def leer_archivo(nombre_archivo):
-    #encoding='utf-8' es para detectar carácteres especiales
-    #como ñ o acentos.
+    # encoding='utf-8' es para detectar carácteres especiales
+    # como ñ o acentos.
     try:
         with open(nombre_archivo, 'r', encoding='utf-8') as f:
             for linea in f:
@@ -21,21 +21,22 @@ def leer_archivo(nombre_archivo):
     except FileNotFoundError:
         print("El archivo no existe o no coincide. ")
 
-#Funcion para identificar los patrones.
+# Funcion para identificar los patrones.
 def busqueda_archivo(nombre , tipo):
-#Variable con los patrones a identificar
+    # Variable con los patrones a identificar
     patrones = {
         "email": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
         "telefono": r"\+?\d{10,12}",
         "fecha": r"\d{2}/\d{2}/\d{4}",
         "palabras_clave": r"\b[a-zA-Z]{8,}\b"
     }
-    #Variable para guardar el tipo de patron
+    # Variable para guardar el tipo de patron
     patron = patrones.get(tipo)
     coincidencias = []
 
-    #Condicional + variable patron para buscar ese tipo de dato al leer el archivo con la primera funcion
+    # Condicional + variable patron para buscar ese tipo de dato al leer el archivo con la primera funcion
     if patron:
+        # Importante: leer_archivo ahora maneja el error, pero devolvemos lista vacía si no hay archivo
         for linea in leer_archivo(nombre):
             coincidencia_linea = re.findall(patron , linea)
             coincidencias.extend(coincidencia_linea)
@@ -43,9 +44,9 @@ def busqueda_archivo(nombre , tipo):
 
 @screen
 def search_box():
-    #Input + buscador + mostrar los resultados
+    # Input + buscador + mostrar los resultados
     user_archivo = input("Nombre del archivo: ")
-    user_tipo = input("Qué tipo de archivo desea buscar? (email/telefono/fecha/palabra clave)")
+    user_tipo = input("Qué tipo de dato desea buscar? (email/telefono/fecha/palabras_clave): ")
 
     resultado = busqueda_archivo(user_archivo , user_tipo)
 
@@ -53,3 +54,9 @@ def search_box():
 
     for i in resultado:
         print(f"- {i}")
+    
+    return {
+        "archivo": user_archivo,
+        "tipo": user_tipo,
+        "lista": resultado
+    }
