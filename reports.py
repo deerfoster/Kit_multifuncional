@@ -1,21 +1,17 @@
-def generar_reporte_txt(datos, ruta_salida):
-    pass
-
-def generar_reporte_csv(datos, ruta_salida):
-    pass
-
-def generar_reporte_general(organizacion, analisis, auditoria):
-    pass
+import csv
 
 def generar_reporte_txt(datos, ruta_salida):
     try:
-        with open(ruta_salida, "w") as archivo:
+        with open(ruta_salida, "w", encoding='utf-8') as archivo:
             archivo.write("=== REPORTE DEL SISTEMA ===\n\n")
 
             for seccion, info in datos.items():
                 archivo.write(f"--- {seccion.upper()} ---\n")
-                for clave, valor in info.items():
-                    archivo.write(f"{clave}: {valor}\n")
+                if isinstance(info, dict):
+                    for clave, valor in info.items():
+                        archivo.write(f"{clave}: {valor}\n")
+                else:
+                    archivo.write(f"{info}\n")
                 archivo.write("\n")
 
         print("Reporte TXT generado correctamente")
@@ -23,17 +19,18 @@ def generar_reporte_txt(datos, ruta_salida):
     except Exception as e:
         print("Error al generar reporte:", e)
 
-import csv
-
 def generar_reporte_csv(datos, ruta_salida):
     try:
-        with open(ruta_salida, "w", newline="") as archivo:
+        with open(ruta_salida, "w", newline="", encoding='utf-8') as archivo:
             writer = csv.writer(archivo)
             writer.writerow(["Sección", "Elemento", "Valor"])
 
             for seccion, info in datos.items():
-                for clave, valor in info.items():
-                    writer.writerow([seccion, clave, valor])
+                if isinstance(info, dict):
+                    for clave, valor in info.items():
+                        writer.writerow([seccion, clave, valor])
+                else:
+                    writer.writerow([seccion, "Info", info])
 
         print("Reporte CSV generado correctamente")
 
