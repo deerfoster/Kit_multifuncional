@@ -16,6 +16,7 @@ def mostrar_ayuda():
     limpiar_pantalla()
     print("\n--- MENÚ DE AYUDA ---")
     print("Este kit le permite gestionar archivos mediante la línea de comandos.")
+    print("1. Auditoria: Capturar el estado de una carpeta y compararlo")
     print("1. Organización: Clasifica y mueve archivos por extensión.")
     print("2. Análisis: Busca información específica dentro de los archivos.")
     print("3. Reportes: Genera resúmenes de las acciones realizadas.")

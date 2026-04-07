@@ -2,6 +2,7 @@ import utils
 import auditor
 import reports
 import os
+
 def submenu_auditoria():
     """Submenú usando funciones existentes de Auditor"""
     while True:
