@@ -1,0 +1,21 @@
+--- DATOS DE PRUEBA PROYECTO UNIMAR ---
+
+1. Correos para el Analizador:
+eduardo.hernandez@unimar.edu.ve
+ricardo.noriega@gmail.com
+soporte_tecnico@test.com
+
+2. Teléfonos de prueba:
++584121234567
+04249876543
+02951112233
+
+3. Fechas de entrega:
+06/04/2026
+15/04/2026
+
+4. Palabras clave (8+ letras):
+Automatizacion
+Ingenieria
+Sistemas
+Margarita

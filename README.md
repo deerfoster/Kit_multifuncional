@@ -8,7 +8,7 @@
 
 | # | Nombre | Rol | GitHub |
 |---|--------|-----|--------|
-| 1 | [Eduardo Hernández]| Líder / Desarrollador | [@Eduardo1705v] |
+| 1 | [Eduardo Hernández]| Líder / Desarrollador | [@Eduardoahs] |
 | 2 | [Xariadna Perez] | Desarrollador | [@deerfoster] |
 | 3 | [Ricardo Noriega] | Desarrollador | [@salvvaged] |
 | 4 | [Miguel Agelvis] | Desarrollador | [@miguelucho16e] |
@@ -19,7 +19,7 @@
 | Módulo | Responsable |
 |--------|-------------|
 | `main.py` | [] |
-| `organizer.py` | [] |
+| `organizer.py` | [Eduardo Hernández] |
 | `analyzer.py` | [Xariadna Pérez] |
 | `auditor.py` | [Ricardo Noriega]|
 | `reports.py` | [Miguel Agelvis] |
@@ -116,3 +116,43 @@ Como salida, el sistema genera automáticamente:
 
 Ambos archivos contienen un resumen estructurado de las operaciones realizadas por el sistema, facilitando la interpretación de resultados y la toma de decisiones.
 
+### Gestor de Organización de Archivos
+
+Este módulo es el encargado del ordenamiento lógico y limpieza de directorios. Permite mover archivos masivamente basándose en criterios técnicos y automatizar el renombrado mediante patrones complejos.
+
+#### Capacidades de Clasificación:
+
+* **Por Extensión:** Agrupa archivos en carpetas automáticas según su tipo (Documentos, Imágenes, Videos, Código, etc.).
+* **Por Tamaño:** Categoriza los archivos en:
+    * **Pequeños:** (< 1 MB)
+    * **Medianos:** (1 MB - 10 MB)
+    * **Grandes:** (> 10 MB)
+* **Por Fecha:** Organiza el contenido según su última modificación en: **Hoy**, **Esta Semana**, **Este Mes** o **Antiguos**.
+
+#### Funcionalidades Avanzadas:
+
+* **Renombrado con Regex:** Permite cambiar el nombre de múltiples archivos simultáneamente utilizando **Expresiones Regulares** para búsquedas precisas de patrones.
+* **Modo Simulación (Dry-run):** Opción de seguridad que permite previsualizar todos los cambios (qué archivos se moverán y cuál será su destino) antes de ejecutar la operación real en el disco.
+* **Auditoría Integrada:** Implementación de **Decoradores** de Python para registrar cada operación realizada, garantizando un sistema rastreable y profesional.
+
+#### Instrucciones de Uso:
+
+1.  Ejecutar el menú principal (`main.py`) y seleccionar la opción **1. Organizar Archivos**.
+2.  Ingresar la **Ruta de la carpeta** que desea procesar (Ej: `C:/Proyectos/Unimar/Descargas`).
+3.  Seleccionar el criterio de organización deseado (1-4).
+4.  Confirmar si desea activar el **Modo Simulación** (`s/n`).
+    * *Nota: Se recomienda usar 's' primero para verificar los cambios sin riesgo.*
+
+#### Ejemplo de Renombrado con Regex:
+* **Patrón:** `^proyecto_.*` (Busca todos los archivos que comiencen con "proyecto_").
+* **Nuevo nombre:** `Entregable_Final`.
+* **Resultado:** `proyecto_v1.pdf` $\rightarrow$ `Entregable_Final_1.pdf`.
+
+## SET DE PRUEBAS (`test_sample/`)
+
+Se ha preparado una carpeta con 9+ archivos de prueba para demostrar las capacidades del sistema:
+
+* **Archivos Pesados:** `geode_installer.exe` (46 MB) para validar la clasificación de archivos "Grandes" (>10MB).
+* **Diversidad de Extensiones:** Muestras de `.jpg`, `.mp3`, `.mp4` y `.docx` para probar la organización automática por carpetas.
+* **Patrones de Texto:** Archivos `.txt` con ejemplos de correos, numeros y fechas para el módulo de búsqueda (Analizador).
+* **Casos de Borde:** Archivos con nombres complejos para probar el sistema de renombrado con **Regex**.
