@@ -156,3 +156,30 @@ Se ha preparado una carpeta con 9+ archivos de prueba para demostrar las capacid
 * **Diversidad de Extensiones:** Muestras de `.jpg`, `.mp3`, `.mp4` y `.docx` para probar la organización automática por carpetas.
 * **Patrones de Texto:** Archivos `.txt` con ejemplos de correos, numeros y fechas para el módulo de búsqueda (Analizador).
 * **Casos de Borde:** Archivos con nombres complejos para probar el sistema de renombrado con **Regex**.
+
+### Herramientas de Interfaz y Utilidades (Módulo Luis Fuentes)
+
+El módulo de utilidades tiene como objetivo estandarizar la interacción entre el usuario y el sistema, asegurando que la navegación por la terminal sea fluida, limpia y libre de errores de entrada. Proporciona las funciones auxiliares necesarias para que el menú principal funcione correctamente.
+
+Este módulo gestiona aspectos críticos de la experiencia de usuario como:
+
+* **Limpieza de la terminal:** Adaptación automática a diferentes sistemas operativos (Windows/Linux).
+* **Validación de entradas:** Asegura que el usuario ingrese datos válidos antes de procesar cualquier acción.
+* **Asistencia y Guía:** Centraliza la información de ayuda para el manejo de los distintos módulos del sistema.
+
+## Funcionamiento
+
+El módulo utiliza la librería `os` para detectar el entorno de ejecución y aplicar los comandos de limpieza de pantalla (`cls` o `clear`). Además, implementa funciones de pausa controlada para evitar que la información importante desaparezca de la vista del usuario antes de que este pueda leerla, gestionando el flujo mediante esperas de teclado.
+
+## Integración
+
+`utils.py` actúa como una capa de soporte para todos los demás componentes. El menú principal (`main.py`) depende directamente de estas funciones para organizar los submenús de organización, análisis y auditoría, manteniendo un diseño visual profesional y ordenado durante toda la ejecución del software.
+
+## Resultado
+
+Como salida, este componente garantiza que el sistema ofrezca:
+
+* **Navegación Intuitiva:** Menús organizados y fáciles de seguir para el usuario final.
+* **Interfaz Limpia:** Eliminación automática de texto residual de operaciones anteriores en la consola.
+* **Manejo de Errores de Usuario:** Mensajes claros cuando se ingresa una opción no válida o una ruta inexistente.
+* **Sistema de Ayuda:** Un apartado dedicado a explicar brevemente el funcionamiento de cada herramienta, facilitando la curva de aprendizaje.
